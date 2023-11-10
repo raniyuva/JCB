@@ -2614,7 +2614,7 @@ sap.ui.getCore().byId("QIDoneList").getBinding("items").refresh(true);
 			//var SelectedArr = sap.ui.getCore().byId("QIDoneList").getSelectedItems();
 			var SelectedArr = oEvent.getParameter("selectedContexts");
 			var SelectedJCArr =[];
-			//t
+			//te
 			if(SelectedArr.length === 0){
 				that.oBusyDialog.close();
 				sap.m.MessageBox.error("Please select at least one item");
