@@ -1,0 +1,72 @@
+<!--<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+<Dialog title="Job Card List" showHeader="true">
+	<List id="QIDoneList" items="{path:''}" mode="MultiSelect">
+		<CustomListItem>
+			<HBox>
+				<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+					<Link text="{ZSVC_JCB_SRV>JC_NUM}"  press="onhandleQIJcPress"/>
+				</VBox>
+			</HBox>
+		</CustomListItem>
+	</List>
+	<buttons>
+	<Button text="Work Complete" press="onPressQiWorkComplete"/>
+		<Button text="Cancel" press="onPressQIDoneCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>-->
+
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		id="QIDoneList"
+		noDataText="No Products Found"
+		multiSelect="true"
+		title="Job Card List"
+		confirm="onPressQiWorkComplete"
+		confirmButtonText="Work Complete"
+		cancel="onPressQIDoneCancel"
+		rememberSelections="false"
+		items="{ZSVC_JCB_SRV>/QI_DONESet}">
+		<columns>
+			<Column width="10em">
+				<header>
+					<Text text="Job card" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet">
+				<header>
+					<Text text="Reg No" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet">
+				<header>
+					<Text text="Service Type" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet">
+				<header>
+					<Text text="Promised Delivery Date" />
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet">
+				<header>
+					<Text text="Creation Date" />
+				</header>
+			</Column>
+		</columns>
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<Link text="{ZSVC_JCB_SRV>JC_NUM}" press="onhandleQIJcPress"/>
+				<Text text="{ZSVC_JCB_SRV>REG_NO}"/>
+				<Text text="{ZSVC_JCB_SRV>SVC_TYP}"/>
+				<Text text="{ZSVC_JCB_SRV>DELV_DT}"/>
+				<Text text="{ZSVC_JCB_SRV>CRE_DAT}"/>
+				<!--<Text text="{path: 'ZSVC_JCB_SRV>DELV_DT', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }"/>
+				<Text text="{path: 'ZSVC_JCB_SRV>', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }"/>-->
+			</cells>
+		</ColumnListItem>
+		
+	</TableSelectDialog>
+</core:FragmentDefinition>

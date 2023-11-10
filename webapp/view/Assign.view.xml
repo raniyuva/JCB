@@ -1,0 +1,969 @@
+<mvc:View controllerName="comZJCB.controller.Assign" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:DT="comZJCB.custom" xmlns:dnd="sap.ui.core.dnd"
+	xmlns:unified="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page title="{i18n>title}" id="page" showHeader="false">
+				<content >
+				
+					<IconTabBar expanded="{device>/isNoPhone}" class="MyIconTabbar">
+						<items>
+							<IconTabFilter icon="sap-icon://company-view" class="onefilter" text="Vehicle Assign">
+								<Bar>
+									<contentMiddle>
+										<Label text="Reg/VIN"></Label>
+										<SearchField search="Hilight" width="200px" class="serachField"></SearchField>
+
+									</contentMiddle>
+								</Bar>
+								<OverflowToolbar class="TopToolBar">
+									<GenericTag text="KAM" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericKAM" press="onPressTagCustpriority">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/KAMCount}" class="TagKAMNum"/>
+									</GenericTag>
+								<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Express" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericSS" press="onPressTagCustpriority">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/ExpressCount}" class="TagKAMNum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Rakshana" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericRak" press="onPressTagCustpriority">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/RakshanaCount}" class="TagKAMNum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="others" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericoth" press="onPressTagCustpriority">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/OtherCount}" class="TagKAMNum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<ToolbarSeparator class="Tabseperator"></ToolbarSeparator>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Appointment" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextApt"
+										press="onPressTagbooktype">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/AppointmentCount}" class="TagAptNum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Walk In" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextWlk"
+										press="onPressTagbooktype">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/WalkInCount}" class="TagWlkNum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Onsite" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextOnsite"
+										press="onPressTagbooktype">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/OnsiteCount}" class="TagOnsiteNum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<ToolbarSeparator class="Tabseperator"></ToolbarSeparator>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Not Attended" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressvehattend">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/NotAttendedCount}" class="TagNANum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Attended" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextA"
+										press="onPressvehattend">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/AttendedCount}" class="TagANum"/>
+									</GenericTag>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+									<ToolbarSeparator class="Tabseperator"></ToolbarSeparator>
+									<!--	<ToolbarSpacer></ToolbarSpacer> -->
+								<!--	<GenericTag text="UnAssigned" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagsTypes5" >
+										<ObjectNumber emphasized="false" number="{CountDataset>/Unassigned}" class="TagNANum"/>
+									</GenericTag>
+									<ToolbarSeparator></ToolbarSeparator>-->
+									<Button id="KAMFilter" text="Clear All" icon="sap-icon://clear-filter" press="Clearfilter" type="Transparent" visible="false"></Button>
+									<!--										<core:Icon id="KAMFilter" src="sap-icon://clear-filter" color="#8875E7" press="Clearfilter" class="Clearfilter" visible="false"></core:Icon>-->
+								
+								</OverflowToolbar>
+								<Panel expandable="true" class="TBSPanel">
+									<headerToolbar>
+										<Toolbar class="TokenToolBar">
+											<Title text="To Be Allocated" class="sapUiSmallMarginBeginEnd"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<Title text="{oLocalJsonModel>/AssignedToDataSetCount}" class="sapUiSmallMarginBeginEnd"/>
+										</Toolbar>
+									</headerToolbar>
+									<content>
+										
+										<HBox items="{oLocalJsonModel>/AssignedToDataSet}" class="TokenContent" id="idTBAs">
+											<DT:tagnew design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom Tokenclass" id="idTBAtag">
+												<DT:customData>
+													<core:CustomData key="mydata" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata1" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata2" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+												</DT:customData>
+												<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC1-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+													<DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC2-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig>
+													<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC3-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+												<!--	class="TagKAMNum"-->
+												<ObjectNumber emphasized="false" number="{oLocalJsonModel>Veh_Type}" unit="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }"/>
+											<DT:dependents>
+        <ResponsivePopover id="popoverTBA" showHeader="true" title="Vehicle Details" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormAssigned" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormAssigned" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="Job Card"/>
+				<Text text="{PopoverModelTBA>/Order_No}"/>
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModelTBA>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModelTBA>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModelTBA>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text text="{PopoverModelTBA>/Sales_date}" />
+				<!-- <Text  text="{'path':'PopoverModelTBA>/Sales_date',formatter: '.formatter.stringtodate'}" /> -->
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModelTBA>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModelTBA>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </DT:dependents>
+											</DT:tagnew>
+										</HBox >
+									</content>
+								</Panel>
+									<OverflowToolbar class="TopToolBar">
+									<GenericTag text="{i18n>Total}" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagjobday">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/TotalCount}" class="TagNANum"/>
+									</GenericTag>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="{i18n>Carryover}" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagjobday">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/CarryOverCount}" class="TagNANum"/>
+									</GenericTag>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="{i18n>Today}" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagjobday">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/TodayCount}" class="TagNANum"/>
+									</GenericTag>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<ToolbarSeparator class="Tabseperator"></ToolbarSeparator>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="To Be Attended" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagStatus">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/Baycountset/Tobe_Attended_Count}" class="TagNANum"/>
+									</GenericTag>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Not Attended" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagStatus">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/Baycountset/Not_Attended_Count}" class="TagNANum"/>
+									</GenericTag>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="WIP" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagStatus">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/Baycountset/Wip_Count}" class="TagNANum"/>
+									</GenericTag>
+									<GenericTag text="QI Inprogress" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagStatus">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/Baycountset/Qi_Count}" class="TagNANum"/>
+									</GenericTag>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<ToolbarSeparator class="Tabseperator"></ToolbarSeparator>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<!-- <GenericTag text="Washing Job" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagjobstatus">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDataset/WashingJobCount}" class="TagNANum"/>
+									</GenericTag> -->
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<GenericTag text="Invoicing" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextA"
+										press="onPressTagjobstatus">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/CountDatasetinvoice/Invoice}" class="TagNANum"/>
+									</GenericTag>
+									<ToolbarSeparator class="Tabseperator"></ToolbarSeparator>
+									<GenericTag text="QI Done" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextA"
+										press="onPressTagQIDone">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/QIDONECOUNT}" class="TagNANum"/>
+											</GenericTag>
+									<ToolbarSeparator class="Tabseperator"></ToolbarSeparator>
+									<!-- <ToolbarSpacer></ToolbarSpacer> -->
+									<!-- <GenericTag text="Technician Unassign" design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom TagGenericBlack TagGenericTextNA"
+										press="onPressTagunassigntech">
+										<ObjectNumber emphasized="false" number="{oLocalJsonModel>/Baycountset/Vehicle_Unass_Count}" class="TagNANum"/>
+									</GenericTag> -->
+								</OverflowToolbar>
+								<OverflowToolbar>
+									<SegmentedButton selectionChange="onSelectButton">
+										<items>
+											<SegmentedButtonItem text="Bay Wise" key="BAYWISE"/>
+											<SegmentedButtonItem text="Technician" key="TechWise"/>
+											<SegmentedButtonItem text="Inspector" key="InspectorWise"/>
+											<SegmentedButtonItem text="Vehicle" key="Veh"/>
+										</items>
+									</SegmentedButton>
+									<ToolbarSpacer></ToolbarSpacer>
+									<!-- <HBox class="PCLegend" id="vehlegend">
+												<Button text="WIP" icon="sap-icon://less" type="Transparent" class="LegendButton whitelegbtn" press="onVehLegendpress"></Button>
+												<Button text="Hold" icon="sap-icon://less" type="Transparent" class="LegendButton redlegbtn" press="onVehLegendpress"></Button>
+												<Button text="Delivered" icon="sap-icon://less" type="Transparent" class="LegendButton bluelegbtn" press="onVehLegendpress" ></Button>
+												<Button text="Vehicle Ready" icon="sap-icon://less" type="Transparent" class="LegendButton greenlegbtn" press="onVehLegendpress"></Button>
+												
+												</HBox> -->
+												<ToolbarSpacer></ToolbarSpacer>
+										<SegmentedButton select="onSelecticon" id="caltabicon" visible="false"  >
+										<items>
+											<SegmentedButtonItem  icon="sap-icon://calendar" key="Calnav"/>
+											<SegmentedButtonItem icon="sap-icon://table-view"  key="Tablenav"/>
+										
+										</items>
+									</SegmentedButton>
+							<!--		<Button id="idCalnav" icon="sap-icon://calendar" press="ShowCal" visible="false"></Button>
+									<Button id="idTablenav" icon="sap-icon://table-view" press="ShowTable"  visible="false"></Button>
+							-->	</OverflowToolbar>
+								<!--<PlanningCalendar id="PC2" startDate="{path: 'calendarModel>/startDate'}" rows="{path: 'calendarModel>/people'}"
+									appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect" class="PlanCalRowCount">
+									<rows >
+										<PlanningCalendarRow title="{calendarModel>name}" text="{calendarModel>role}"  enableAppointmentsDragAndDrop="true"
+											enableAppointmentsResize="true" enableAppointmentsCreate="true" appointmentDrop="handleAppointmentDrop"
+											appointmentDragEnter="handleAppointmentDragEnter" appointmentResize="handleAppointmentResize" appointmentCreate="handleAppointmentCreate"
+											appointments="{calendarModel>appointments/results}">
+											<appointments >
+												<unified:CalendarAppointment startDate="{calendarModel>start}" endDate="{calendarModel>end}" icon="{calendarModel>pic}"
+													title="{calendarModel>title}" text="{calendarModel>info}"  tentative="{calendarModel>tentative}">
+													
+												</unified:CalendarAppointment>
+											</appointments>
+										</PlanningCalendarRow>
+									</rows>
+								</PlanningCalendar>-->
+								<ScrollContainer
+		height="20rem"
+		class="PCScrollcontainer"
+		vertical="true"
+		>
+								<PlanningCalendar id="PC2" startDate="{oLocalJsonModel>/startdatePC}" rows="{path: 'oLocalJsonModel>/calendarModel',templateShareable:false }" stickyHeader="true"
+									appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect" class="PlanCalRowCount" >
+									<toolbarContent>
+										<SearchField id="SASearch" width="150px" placeholder="Search Bay" class="serachField SASearch" search="OnSASearchcal"></SearchField>
+												<!-- <HBox class="PCLegend">
+												<Button text="All" icon="sap-icon://less" type="Transparent" class="LegendButton whitelegbtn" ></Button>
+												<Button text="Absent" icon="sap-icon://less" type="Transparent" class="LegendButton greylegbtn" ></Button>
+												<Button text="Busy" icon="sap-icon://less" type="Transparent" class="LegendButton redlegbtn" ></Button>
+												<Button text="Available" icon="sap-icon://less" type="Transparent" class="LegendButton bluelegbtn" ></Button>
+												<Button text="Active" icon="sap-icon://less" type="Transparent" class="LegendButton greenlegbtn" ></Button>
+												</HBox> -->
+												
+									</toolbarContent>
+									<rows >
+										<PlanningCalendarRow title="{oLocalJsonModel>BayCat}" text="{oLocalJsonModel>BayCount}" 
+											enableAppointmentsDragAndDrop="true" enableAppointmentsResize="true" enableAppointmentsCreate="true" appointmentDrop="handleAppointmentDrop"
+											appointmentDragEnter="handleAppointmentDragEnter" appointmentResize="handleAppointmentResize" appointmentCreate="handleAppointmentCreate"
+											appointments="{oLocalJsonModel>BAYWISE/results}">
+											<customData>
+														<core:CustomData key="mydatacalrowstatus" value="{oLocalJsonModel>Status}" writeToDom="true"></core:CustomData>
+														
+													</customData>
+											<appointments >
+												<unified:CalendarAppointment startDate="{oLocalJsonModel>Start_Timestamp}" endDate="{oLocalJsonModel>End_Timestamp}" id="Idappt"
+													title="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }" text="{oLocalJsonModel>Veh_Type}">
+													<unified:customData>
+														<core:CustomData key="mydatacal" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+														<core:CustomData key="mydatacal1" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+														<core:CustomData key="mydatacal2" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													</unified:customData>
+													<unified:dependents>
+        <ResponsivePopover id="popover" showHeader="true" title="Vehicle Details" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormChangeaddres" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormChangeaddres" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModel>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModel>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModel>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModel>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text text="{PopoverModel>/Sales_date}" />
+				<!-- <Text  text="{'path':'PopoverModel>/Sales_date',formatter: '.formatter.stringtodate'}" /> -->
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModel>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModel>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </unified:dependents>
+												</unified:CalendarAppointment>
+												 
+											</appointments>
+										</PlanningCalendarRow>
+									</rows>
+								</PlanningCalendar>
+									<PlanningCalendar id="PC1" startDate="{oLocalJsonModel>/startdatePC}" rows="{path: 'oLocalJsonModel>/calendarTechModel'}" stickyHeader="true"
+									appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelectReadmode" class="PlanCalRowCount" visible="false" rowHeaderClick="onpressrowHeaderClick">
+									<toolbarContent>
+										<SearchField id="SASearch1" width="150px" placeholder="Search Technician" class="serachField SASearch" search="OnSASearchcal"></SearchField>
+												<HBox class="PCLegend">
+												<Button text="All" icon="sap-icon://less" type="Transparent" class="LegendButton whitelegbtn" press="onTechLegendpress" ></Button>
+												<Button text="Absent" icon="sap-icon://less" type="Transparent" class="LegendButton greylegbtn" press="onTechLegendpress" ></Button>
+												<Button text="Busy" icon="sap-icon://less" type="Transparent" class="LegendButton redlegbtn" press="onTechLegendpress" ></Button>
+												<Button text="Available" icon="sap-icon://less" type="Transparent" class="LegendButton bluelegbtn" press="onTechLegendpress" ></Button>
+												<Button text="Active" icon="sap-icon://less" type="Transparent" class="LegendButton greenlegbtn" press="onTechLegendpress" ></Button>
+												<Button icon="/sap/bc/ui5_ui5/sap/zreceptionist/images/Reassign.png" type="Transparent" press="onpressReassignJCB" class="ReassignBTN"></Button>
+												</HBox>
+												
+									</toolbarContent>
+									<rows >
+										<PlanningCalendarRow title="{oLocalJsonModel>EMP_NO}-{oLocalJsonModel>EMP_NAME}" text="{oLocalJsonModel>EMP_Count}" icon="/sap/opu/odata/sap/ZSVC_JCB_SRV{parts : [{path:'oLocalJsonModel>EMP_NO'}], formatter: '.formatter.viewImage'}"
+											enableAppointmentsDragAndDrop="true" enableAppointmentsResize="true" enableAppointmentsCreate="true" appointmentDrop="handleAppointmentDrop"
+											appointmentDragEnter="handleAppointmentDragEnter" appointmentResize="handleAppointmentResize" appointmentCreate="handleAppointmentCreate"
+											appointments="{oLocalJsonModel>TechWise/results}">
+											<customData>
+														<core:CustomData key="mydatacalrowstatus" value="{oLocalJsonModel>EMP_Status}" writeToDom="true"></core:CustomData>
+														
+													</customData>
+											<appointments >
+												<unified:CalendarAppointment startDate="{oLocalJsonModel>Start_Timestamp}" endDate="{oLocalJsonModel>End_Timestamp}" id="Idappt1"
+													title="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }" text="{oLocalJsonModel>Veh_Type}">
+													<unified:customData>
+														<core:CustomData key="mydatacal" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+														<core:CustomData key="mydatacal1" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+														<core:CustomData key="mydatacal2" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													</unified:customData>
+													<unified:dependents>
+        <ResponsivePopover id="popover1" showHeader="false" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormChangeaddres1" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormChangeaddres1" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModel1>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModel1>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModel1>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModel1>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text text="{PopoverModel1>/Sales_date}" />
+				
+				<!-- <Text  text="{'path':'PopoverModel1>/Sales_date',formatter: '.formatter.stringtodate'}" /> -->
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModel1>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModel1>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </unified:dependents>
+												</unified:CalendarAppointment>
+												 
+											</appointments>
+										</PlanningCalendarRow>
+									</rows>
+								</PlanningCalendar>
+									<PlanningCalendar id="PC3" startDate="{oLocalJsonModel>/startdatePC}" rows="{path: 'oLocalJsonModel>/calendarInspModel'}" stickyHeader="true"
+									appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelectReadmode" class="PlanCalRowCount"  visible="false">
+									<toolbarContent>
+										<SearchField id="SASearch3" width="150px" placeholder="Search Inspector" class="serachField SASearch" search="OnSASearchcal"></SearchField>
+												<HBox class="PCLegend">
+												<Button text="All" icon="sap-icon://less" type="Transparent" class="LegendButton whitelegbtn" press="onInspLegendpress"></Button>
+												<Button text="Absent" icon="sap-icon://less" type="Transparent" class="LegendButton greylegbtn" press="onInspLegendpress" ></Button>
+												<Button text="Busy" icon="sap-icon://less" type="Transparent" class="LegendButton redlegbtn" press="onInspLegendpress" ></Button>
+												<Button text="Available" icon="sap-icon://less" type="Transparent" class="LegendButton bluelegbtn" press="onInspLegendpress" ></Button>
+												<Button text="Active" icon="sap-icon://less" type="Transparent" class="LegendButton greenlegbtn" press="onInspLegendpress" ></Button>
+												</HBox>
+												
+									</toolbarContent>
+									<rows >
+										<PlanningCalendarRow title="{oLocalJsonModel>EMP_NO}-{oLocalJsonModel>EMP_Name}" text="{oLocalJsonModel>EMP_Count}" icon="/sap/opu/odata/sap/ZSVC_JCB_SRV{parts : [{path:'oLocalJsonModel>EMP_NO'}], formatter: '.formatter.viewImage'}"
+											enableAppointmentsDragAndDrop="true" enableAppointmentsResize="true" enableAppointmentsCreate="true" appointmentDrop="handleAppointmentDrop"
+											appointmentDragEnter="handleAppointmentDragEnter" appointmentResize="handleAppointmentResize" appointmentCreate="handleAppointmentCreate"
+											appointments="{oLocalJsonModel>InspectorWise/results}">
+											<customData>
+														<core:CustomData key="mydatacalrowstatus" value="{oLocalJsonModel>EMP_Status}" writeToDom="true"></core:CustomData>
+														
+													</customData>
+											<appointments >
+												<unified:CalendarAppointment startDate="{oLocalJsonModel>Start_Timestamp}" endDate="{oLocalJsonModel>End_Timestamp}" id="Idappt3"
+													title="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }" text="{oLocalJsonModel>Veh_Type}">
+													<unified:customData>
+														<core:CustomData key="mydatacal" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+														<core:CustomData key="mydatacal1" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+														<core:CustomData key="mydatacal2" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													</unified:customData>
+													<unified:dependents>
+        <ResponsivePopover id="popover3" showHeader="false" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormChangeaddres3" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormChangeaddres3" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModel3>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModel3>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModel3>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModel3>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text text="{PopoverModel3>/Sales_date}" />
+				<!-- <Text  text="{'path':'PopoverModel3>/Sales_date',formatter: '.formatter.stringtodate'}" /> -->
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModel3>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModel3>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </unified:dependents>
+												</unified:CalendarAppointment>
+												 
+											</appointments>
+										</PlanningCalendarRow>
+									</rows>
+								</PlanningCalendar>
+															<PlanningCalendar id="PC4" startDate="{oLocalJsonModel>/startdatePC}" rows="{path: 'oLocalJsonModel>/calendarVehModel'}" stickyHeader="true"
+									appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect" class="PlanCalRowCount"  visible="false">
+									<toolbarContent>
+										<SearchField id="SASearch4" width="150px" placeholder="Search SA" class="serachField SASearch" search="OnSASearchcal"></SearchField>
+												<!-- <HBox class="PCLegend">
+												<Button text="WIP" icon="sap-icon://less" type="Transparent" class="LegendButton whitelegbtn" press="onVehLegendpress"></Button>
+												<Button text="Hold" icon="sap-icon://less" type="Transparent" class="LegendButton redlegbtn" press="onVehLegendpress"></Button>
+												<Button text="Delivered" icon="sap-icon://less" type="Transparent" class="LegendButton bluelegbtn" press="onVehLegendpress" ></Button>
+												<Button text="Vehicle Ready" icon="sap-icon://less" type="Transparent" class="LegendButton greenlegbtn" press="onVehLegendpress"></Button>
+												
+												</HBox> -->
+												
+									</toolbarContent>
+									<rows >
+										<PlanningCalendarRow title="{oLocalJsonModel>Vin_no}" 
+											enableAppointmentsDragAndDrop="true" enableAppointmentsResize="true" enableAppointmentsCreate="true" appointmentDrop="handleAppointmentDrop"
+											appointmentDragEnter="handleAppointmentDragEnter" appointmentResize="handleAppointmentResize" appointmentCreate="handleAppointmentCreate"
+											appointments="{oLocalJsonModel>Servicehdrtoitm/results}">
+											<customData>
+														<core:CustomData key="mydatacalrowstatus" value="{oLocalJsonModel>Status}" writeToDom="true"></core:CustomData>
+														
+													</customData>
+											<appointments >
+												<unified:CalendarAppointment startDate="{oLocalJsonModel>Start_time}" endDate="{oLocalJsonModel>End_time}" id="Idappt4"
+													title="{oLocalJsonModel>Stagetext}({oLocalJsonModel>stageActualvalue}/{oLocalJsonModel>Stagetargetvalue})" >
+													<unified:customData>
+														<core:CustomData key="mydatacalveh" value="{oLocalJsonModel>Stagecolor}" writeToDom="true"></core:CustomData>
+														<!-- <core:CustomData key="mydatacal1" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+														<core:CustomData key="mydatacal2" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData> -->
+													</unified:customData>
+													<!-- <unified:dependents>
+        <ResponsivePopover id="popover4" showHeader="false">
+          <content>
+		  		<f:SimpleForm id="SimpleFormChangeaddres4" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModel>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModel>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModel>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text  text="{PopoverModel>/Salesdate}" />
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModel>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModel>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </unified:dependents> -->
+												</unified:CalendarAppointment>
+												 
+											</appointments>
+										</PlanningCalendarRow>
+									</rows>
+								</PlanningCalendar>
+								<table:Table alternateRowColors="true" visible="false" class="CalTable" id="PCTable" selectionMode="None" visibleRowCount="5" enableCellFilter="true" firstVisibleRowChanged="firstVisibleRowChanged"
+									filter="filterColumn" rows="{oLocalJsonModel>/VehTableset}" threshold="15" enableBusyIndicator="true" ariaLabelledBy="title" >
+									<!--	<table:noData>
+					<BusyIndicator class="sapUiMediumMargin"/>
+				</table:noData>
+			-->
+									<table:columns>
+										<table:Column filterProperty="SA_No" autoResizable="true" width="11rem">
+											<Label text="Vehicle"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Vin_No}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Gate_In_Time" autoResizable="true" width="11rem">
+											<Label text="Gate In Time"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Gate_In_Time}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="11rem">
+											<Label text="Appt"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Appt}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="11rem">
+											<Label text="Job Card"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Job_Card}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="11rem">
+											<Label text="Status"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Status}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="11rem">
+											<Label text="Reg"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Reg_No}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="11rem">
+											<Label text="Model"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Model}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="11rem">
+											<Label text="Service Type"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Service_Type}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="11rem">
+											<Label text="Delivery Time"/>
+											<table:template>
+												<Text text="{oLocalJsonModel>Delivery_Time}" wrapping="false"/>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem">
+											<Label text="24"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>Two_Four_Time}" class="Circle"  /> -->
+											<!-- <Input value="{oLocalJsonModel>Two_Four_Time}" wrapping="false" class="Circle"/> -->
+												<DT:Circle value="{oLocalJsonModel>Two_Four_Time}" offset1="{= ${oLocalJsonModel>Two_Four_Per} >= 100 ? 100 : ${oLocalJsonModel>Two_Four_Per}}%" offset2="{= ${oLocalJsonModel>Two_Four_Per} > 100 ? 0 : 100- ${oLocalJsonModel>Two_Four_Per}}%" color1="{oLocalJsonModel>Two_Four_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem">
+											<Label text="Fo"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>Re_Time}" class="Circle"  /> -->
+												<DT:Circle value="{oLocalJsonModel>Re_Time}" offset1="{= ${oLocalJsonModel>Re_Per} >= 100 ? 100 : ${oLocalJsonModel>Re_Per}}%" offset2="{= ${oLocalJsonModel>Re_Per} > 100 ? 0 : 100- ${oLocalJsonModel>Re_Per}}%" color1="{oLocalJsonModel>Re_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem">
+											<Label text="Cr"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>Cr_Time}" class="Circle"  /> -->
+												<DT:Circle value="{oLocalJsonModel>Cr_Time}" offset1="{= ${oLocalJsonModel>Cr_Per} >= 100 ? 100 : ${oLocalJsonModel>Cr_Per}}%" offset2="{= ${oLocalJsonModel>Cr_Per} > 100 ? 0 : 100- ${oLocalJsonModel>Cr_Per}}%" color1="{oLocalJsonModel>Cr_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem">
+											<Label text="Ap"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>Ap_Time}" class="Circle"  /> -->
+												<DT:Circle value="{oLocalJsonModel>Ap_Time}" offset1="{= ${oLocalJsonModel>Ap_Per} >= 100 ? 100 : ${oLocalJsonModel>Ap_Per}}%" offset2="{= ${oLocalJsonModel>Ap_Per} > 100 ? 0 : 100- ${oLocalJsonModel>Ap_Per}}%" color1="{oLocalJsonModel>Ap_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem">
+											<Label text="Al"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>As_Time}" class="Circle"  /> -->
+												<DT:Circle value="{oLocalJsonModel>As_Time}" offset1="{= ${oLocalJsonModel>As_Per} >= 100 ? 100 : ${oLocalJsonModel>As_Per}}%" offset2="{= ${oLocalJsonModel>As_Per} > 100 ? 0 : 100- ${oLocalJsonModel>As_Per}}%" color1="{oLocalJsonModel>As_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem">
+											<Label text="Pe"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>Pe_Time}" class="Circle"  /> -->
+												<DT:Circle value="{oLocalJsonModel>Pe_Time}" offset1="{= ${oLocalJsonModel>Pe_Per} >= 100 ? 100 : ${oLocalJsonModel>Pe_Per}}%" offset2="{= ${oLocalJsonModel>Pe_Per} > 100 ? 0 : 100- ${oLocalJsonModel>Pe_Per}}%" color1="{oLocalJsonModel>Pe_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem">
+											<Label text="In"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>In_Time}" class="Circle"  /> -->
+												<DT:Circle value="{oLocalJsonModel>In_Time}" offset1="{= ${oLocalJsonModel>In_Per} >= 100 ? 100 : ${oLocalJsonModel>In_Per}}%" offset2="{= ${oLocalJsonModel>In_Per} > 100 ? 0 : 100- ${oLocalJsonModel>In_Per}}%" color1="{oLocalJsonModel>In_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+										<table:Column autoResizable="true" width="3rem" >
+											<Label text="IV"/>
+											<table:template>
+											<!-- <Button text="{oLocalJsonModel>Re_Time}" class="Circle"  >
+											<customData>
+										<core:CustomData key="mydataJCB" value="{oLocalJsonModel>Iv_Color}" writeToDom="true"></core:CustomData>
+										<core:CustomData key="mydataJCBcolor" value="{= ${oLocalJsonModel>Iv_Per} >= 100 ? 100 : ${oLocalJsonModel>Iv_Per}}%" writeToDom="true"></core:CustomData>
+									</customData>
+											</Button> -->
+												<DT:Circle value="{oLocalJsonModel>Iv_Time}" offset1="{= ${oLocalJsonModel>Iv_Per} >= 100 ? 100 : ${oLocalJsonModel>Iv_Per}}%" offset2="{= ${oLocalJsonModel>Iv_Per} > 100 ? 0 : 100- ${oLocalJsonModel>Iv_Per}}%" color1="{oLocalJsonModel>Iv_Color}" color2="black"></DT:Circle>
+											</table:template>
+										</table:Column>
+									</table:columns>
+								</table:Table>
+								</ScrollContainer>
+								<Panel expandable="true">
+									<headerToolbar>
+										<Toolbar class="TokenToolBar">
+											<Title text="Hold" class="sapUiSmallMarginBeginEnd"/>
+											<ToolbarSpacer></ToolbarSpacer>
+											<Title text="{oLocalJsonModel>/CountDataset/HoldCount}" class="sapUiSmallMarginBeginEnd"/>
+										</Toolbar>
+									</headerToolbar>
+									<content>
+								<!--	<l:Grid hSpacing="0" defaultSpan="XL6 L6 M6 S12" class="sapUiSmallMargin" width="100%">-->
+										
+								
+										<HBox>
+										
+											<VBox  width="25%">
+												<Toolbar class="TokenToolBar">
+													<Title text="Parts" class="sapUiSmallMarginBeginEnd"/>
+												<ToolbarSpacer></ToolbarSpacer>
+											<Title text="{oLocalJsonModel>/CountDataset/PartsCount}" class="sapUiSmallMarginBeginEnd"/>
+										</Toolbar>
+											
+												<HBox items="{oLocalJsonModel>/HoldPartsdata}" class="TokenContent" id="idHoldPA">
+											<DT:tagnew design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom Tokenclass" id="idHoldPAtag">
+												<DT:customData>
+													<core:CustomData key="mydata" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata1" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata2" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+												</DT:customData>
+												<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC1-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+													<DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC2-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDropholdpa"/>
+												</DT:dragDropConfig>
+													<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC3-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+												<!--	class="TagKAMNum"-->
+												<ObjectNumber emphasized="false" number="{oLocalJsonModel>Veh_Type}" unit="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }"/>
+											<DT:dependents>
+        <ResponsivePopover id="popoverHoldPA" showHeader="true" title="Vehicle Details" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormHoldPA" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormHoldPA" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModelHoldPA>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModelHoldPA>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModelHoldPA>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModelHoldPA>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text  text="{PopoverModelHoldPA>/Sales_date}" />
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModelHoldPA>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModelHoldPA>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </DT:dependents>
+											</DT:tagnew>
+										</HBox >
+											</VBox>
+											
+											<VBox width="25%">
+												<Toolbar class="TokenToolBar">
+													<Title text="Sublet" class="sapUiSmallMarginBeginEnd"/>
+												<ToolbarSpacer></ToolbarSpacer>
+											<Title text="{oLocalJsonModel>/CountDataset/SubletCount}" class="sapUiSmallMarginBeginEnd"/>
+										</Toolbar>
+												<HBox items="{oLocalJsonModel>/HoldSubletdata}" class="TokenContent" id="idHoldSU">
+											<DT:tagnew design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom Tokenclass" id="idHoldSUtag">
+												<DT:customData>
+													<core:CustomData key="mydata" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata1" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata2" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+												</DT:customData>
+												<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC1-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+													<DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC2-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDropholdsu"/>
+												</DT:dragDropConfig>
+													<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC3-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+												<!--	class="TagKAMNum"-->
+												<ObjectNumber emphasized="false" number="{oLocalJsonModel>Veh_Type}" unit="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }"/>
+											<DT:dependents>
+        <ResponsivePopover id="popoverHoldSU" showHeader="true" title="Vehicle Details" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormHoldSU" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormHoldSU" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModelHoldSU>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModelHoldSU>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModelHoldSU>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModelHoldSU>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text  text="{PopoverModelHoldSU>/Sales_date}" />
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModelHoldSU>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModelHoldSU>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </DT:dependents>
+											</DT:tagnew>
+										</HBox >
+											</VBox>
+											<VBox width="20%">
+												<Toolbar class="TokenToolBar">
+													<Title text="Others" class="sapUiSmallMarginBeginEnd"/>
+												<ToolbarSpacer></ToolbarSpacer>
+											<Title text="{oLocalJsonModel>/CountDataset/OthersCount}" class="sapUiSmallMarginBeginEnd"/>
+										</Toolbar>
+												<HBox items="{oLocalJsonModel>/Holdothersdata}" class="TokenContent" id="idHoldOT">
+											<DT:tagnew design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom Tokenclass" id="idHoldOTtag">
+												<DT:customData>
+													<core:CustomData key="mydata" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata1" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata2" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+												</DT:customData>
+												<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC1-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+													<DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC2-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDropholdot"/>
+												</DT:dragDropConfig>
+													<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC3-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+												<!--	class="TagKAMNum"-->
+												<ObjectNumber emphasized="false" number="{oLocalJsonModel>Veh_Type}" unit="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }"/>
+											<DT:dependents>
+        <ResponsivePopover id="popoverHoldOT" showHeader="true" title="Vehicle Details" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormHoldOT" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormHoldOT" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModelHoldOT>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModelHoldOT>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModelHoldOT>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModelHoldOT>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text  text="{PopoverModelHoldOT>/Sales_date}" />
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModelHoldOT>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModelHoldOT>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </DT:dependents>
+											</DT:tagnew>
+										</HBox >
+											</VBox>
+											<VBox width="20%">
+												<Toolbar class="TokenToolBar">
+													<Title text="Sublet" class="sapUiSmallMarginBeginEnd"/>
+													<ToolbarSpacer></ToolbarSpacer>
+											<Title text="{oLocalJsonModel>/CountDataset/SubletMainCount}" class="sapUiSmallMarginBeginEnd"/>
+										
+												</Toolbar>
+												<HBox items="{oLocalJsonModel>/MainSubletdata}" class="TokenContent" id="idMainSU">
+											<DT:tagnew design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom Tokenclass" id="idMainSUtag">
+												<DT:customData>
+													<core:CustomData key="mydata" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata1" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata2" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+												</DT:customData>
+												<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC1-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+													<DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC2-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDropsu"/>
+												</DT:dragDropConfig>
+													<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC3-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+												<!--	class="TagKAMNum"-->
+												<ObjectNumber emphasized="false" number="{oLocalJsonModel>Veh_Type}" unit="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }"/>
+											<DT:dependents>
+        <ResponsivePopover id="popoverMainSU" showHeader="true" title="Vehicle Details" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormMainSU" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				 <f:SimpleForm  id="SimpleFormMainSU" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModelMainSU>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModelMainSU>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModelMainSU>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModelMainSU>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text  text="{PopoverModelMainSU>/Sales_date}" />
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModelMainSU>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModelMainSU>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </DT:dependents>
+											</DT:tagnew>
+										</HBox >
+											</VBox>
+											<VBox width="20%">
+												<Toolbar class="TokenToolBar">
+													<Title text="RoadTest" class="sapUiSmallMarginBeginEnd"/>
+													<ToolbarSpacer></ToolbarSpacer>
+											<Title text="{oLocalJsonModel>/CountDataset/RoadTestMainCount}" class="sapUiSmallMarginBeginEnd"/>
+												</Toolbar>
+												<HBox items="{oLocalJsonModel>/MainRoadtestdata}" class="TokenContent" id="idMainRT">
+											<DT:tagnew design="StatusIconHidden" status="none" class="sapUiSmallMarginBottom Tokenclass" id="idMainRTtag">
+												<DT:customData>
+													<core:CustomData key="mydata" value="{oLocalJsonModel>Booking_type}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata1" value="{oLocalJsonModel>Cust_Priority}" writeToDom="true"></core:CustomData>
+													<core:CustomData key="mydata2" value="{oLocalJsonModel>Veh_status}" writeToDom="true"></core:CustomData>
+												</DT:customData>
+												<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC1-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+													<DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC2-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDroprt"/>
+												</DT:dragDropConfig>
+													<!-- <DT:dragDropConfig>
+													<dnd:DragDropInfo sourceAggregation="value" targetElement="PC3-Table" targetAggregation="items" dragOver="onListPlanningCalendardragOver"
+														dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+												</DT:dragDropConfig> -->
+												<!--	class="TagKAMNum"-->
+												<ObjectNumber emphasized="false" number="{oLocalJsonModel>Veh_Type}" unit="{= ${oLocalJsonModel>Reg_No} === '' ? ${oLocalJsonModel>Vin_No} : ${oLocalJsonModel>Reg_No} }"/>
+											<DT:dependents>
+        <ResponsivePopover id="popoverMainRT" showHeader="true" title="Vehicle Details" placement="Auto">
+          <content>
+		  		<!-- <f:SimpleForm id="SimpleFormMainRT" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+				labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" class="sapUiResponsiveMargin">
+				<f:content> -->
+				<f:SimpleForm width="90%" id="SimpleFormMainRT" maxContainerCols="1" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+				<Label text="RO NO"></Label>
+				<Text  text="{PopoverModelMainRT>/Order_No}" />
+				<Label text="Reg No"></Label>
+				<Text  text="{PopoverModelMainRT>/Reg_No}" />
+				<Label text="VIN"></Label>
+				<Text text="{PopoverModelMainRT>/Vin_No}" />
+				<Label text="Customer Name"></Label>
+				<Text text="{PopoverModelMainRT>/Cust_Name}" />
+				<Label text="Sales Date"></Label>
+				<Text  text="{PopoverModelMainRT>/Sales_date}" />
+			<Label text="Model"></Label>
+			<Text  text="{PopoverModelMainRT>/Model}" />
+			<Label text="Variant"></Label>
+			<Text text="{PopoverModelMainRT>/Variant}" />
+			</f:content>
+		</f:SimpleForm>
+           
+          </content>
+        </ResponsivePopover>
+      </DT:dependents>
+											</DT:tagnew>
+										</HBox >
+											</VBox>
+										</HBox>
+									<!--	</l:Grid>	-->
+									</content>
+								</Panel>
+							</IconTabFilter>
+						
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button id="idCreate" type="Accept" text="Assign" press="navtojCAssign" enabled="{oLocalJsonModel>/NavButtons}" />
+						<Button id="idAssignJob" type="Emphasized" text="Job Details" press="NavtoJCaddjob" enabled="{oLocalJsonModel>/NavButtons}"/>
+						<!-- <Button id="idEdit" type="Emphasized" text="Edit" enabled="false" press="handleROEditPress"/> -->
+						<Button text="Stop ALL" type="Reject" press="handleStopAllJobs"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

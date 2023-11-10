@@ -1,0 +1,897 @@
+/* Enter your custom styles here */
+/* Enter your custom styles here */
+
+.TagKAMNum .sapMObjectNumberText{
+	color: white !important;
+    padding-left: 3px !important;
+    background:black !important;
+    border-radius: 5px;
+}
+.TagAptNum .sapMObjectNumberText{
+	color: white !important;
+    padding-left: 3px !important;
+    background:rgb(0,112,192);
+    border-radius: 5px;
+}
+
+.TagWlkNum .sapMObjectNumberText{
+	color: white !important;
+    padding-left: 3px !important;
+    background:rgb(127,96,0);
+    border-radius: 5px;
+}
+.TagOnsiteNum .sapMObjectNumberText{
+	color: white !important;
+    padding-left: 3px !important;
+    background:rgb(31,31,31);
+    border-radius: 5px;
+}
+.TagNANum .sapMObjectNumberText{
+	color: white !important;
+    padding-left: 3px !important;
+    background:rgb(127,127,127);
+    border-radius: 5px;
+}
+.TagANum .sapMObjectNumberText{
+	color: white !important;
+    padding-left: 3px !important;
+    background:rgb(0,218,130);
+    border-radius: 5px;
+}
+.TagGenericKAM .sapMGenericTagWrap{
+	 background: RGB(255,192,0) !important;
+    border: 0px !important;
+}
+
+.TagGenericSS .sapMGenericTagWrap{
+	 background: RGB(255,80,80) !important;
+    border: 0px !important;
+}
+.TagGenericRak .sapMGenericTagWrap{
+    background: RGB(1,162,153) !important;
+   border: 0px !important;
+}
+.TagGenericoth .sapMGenericTagWrap{
+	 background: RGB(255,255,255) !important;
+    border: 0px !important;
+}
+.TagGenericBlack .sapMGenericTagWrap{
+	 background: RGB(0,0,0)  !important;
+    border: 0px !important;
+}
+.TagGenericoth .sapMGenericTagText {
+    color: rgb(127,127,127);
+}
+.TagGenericTextApt .sapMGenericTagText{
+	color:rgb(0,112,192);;
+}
+.TagGenericTextWlk .sapMGenericTagText{
+	color:rgb(127,96,0);
+}
+.TagGenericTextOnsite .sapMGenericTagText{
+	color:rgb(255,255,255);
+}
+.TagGenericTextNA .sapMGenericTagText{
+	color:rgb(127,127,127);
+}
+.TagGenericTextA .sapMGenericTagText{
+	color:rgb(0,218,130);
+}
+[data-mydata="APPOINTMENT"] .sapMObjectNumberText{
+	background:rgb(0,176,240);
+		color: rgb(0,0,0) !important;
+    padding-left: 3px !important;
+    border:1px solid black;
+    border-radius: 5px;
+    width:15px;
+    text-overflow: unset;
+}
+[data-mydata="walkin"] .sapMObjectNumberText{
+	background:rgb(127,96,0);
+		color: white !important;
+    padding-left: 3px !important;
+    border:1px solid black;
+    border-radius: 5px;
+    width:15px;
+    text-overflow: unset;
+}
+[data-mydata="ONSITE"] .sapMObjectNumberText{
+	background:rgb(127,96,0);
+		color: white !important;
+    padding-left: 3px !important;
+    border:1px solid black;
+    border-radius: 5px;
+    width:15px;
+    text-overflow: unset;
+}
+[data-mydata1="KAM"] .sapMGenericTagWrap{
+	background:rgb(255,192,0);
+}
+[data-mydata1="EXPRESS"] .sapMGenericTagWrap{
+	background:Red;
+}
+[data-mydata1="RAKSHANA"] .sapMGenericTagWrap{
+	background:RGB(1,162,153);
+}
+[data-mydata1="OTHERS"] .sapMGenericTagWrap{
+	background:black;
+}
+[data-mydata1="KAM"] .sapMObjectNumberUnit{
+	color: white !important;
+}
+[data-mydata1="EXPRESS"] .sapMObjectNumberUnit{
+	color: white !important;
+}
+[data-mydata1="RAKSHANA"] .sapMObjectNumberUnit{
+	color: white !important;
+}
+[data-mydata1="OTHERS"] .sapMObjectNumberUnit{
+color: white !important;
+}
+[data-mydatacal1="To Be attended"] {
+border-left: 1px solid black !important;
+    border-right: 0.35rem solid rgb(127,127,127) !important;
+}
+[data-mydatacal1="Work in Progress"] {
+border-left: 1px solid black !important;
+    border-right: 0.35rem solid yellow !important;
+}
+[data-mydatacal1="Job done to be delivered"] {
+border-left: 1px solid black !important;
+    border-right: 0.35rem solid rgb(0,218,130) !important;
+}
+[data-mydatacal1="Hold"] {
+border-left: 1px solid black !important;
+    border-right: 0.35rem solid Red !important;
+}
+[data-mydatacal="walkin"] .sapUiCalendarAppText{
+background:rgb(127,96,0);
+border:1px solid black;
+width: 20px !important;
+position:absolute !important;
+color: white;
+margin-top: 5px;
+    border-radius: 5px;
+    padding-top: 2px;
+    height: 1.20rem;
+    padding-left: 0.2rem;
+    margin-left: 5px;
+}
+
+[data-mydatacal="APPOINTMENT"] .sapUiCalendarAppText{
+background:rgb(0,176,240);	
+border:1px solid black;
+width: 20px !important;
+position:absolute !important;
+color: white;
+margin-top: 5px;
+    border-radius: 5px;
+    padding-top: 2px;
+    height: 1.20rem;
+    padding-left: 0.2rem;
+    margin-left: 5px;
+}
+[data-mydatacal2="KAM"] .sapUiCalendarAppCont{
+background-color: rgb(255,192,0) !important;
+}
+[data-mydatacal2="Normal"] .sapUiCalendarAppCont{
+background-color: black !important;
+}
+[data-mydatacal2="Express"] .sapUiCalendarAppCont {
+background-color: red !important;
+}
+.PlanCalRowCount .sapUiCalendarAppTitle {
+    color: white !important
+}
+.LegendButton.sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable:not(.sapMBtnActive):not(.sapMToggleBtnPressed), .sapMIBar-CTX .LegendButton.sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable:not(.sapMBtnActive):not(.sapMToggleBtnPressed) {
+    background-color: transparent !important;
+    border: 0px !important;
+}
+
+[data-status-color="BUSY"]{
+	 background-color: rgb(255,80,80) !important;
+	     border: 1px solid black;
+         border-start-start-radius: 5px;
+    border-end-start-radius: 5px;
+    border-start-end-radius: 5px;
+    border-end-end-radius: 5px;
+}
+[data-status-color="AVAILABLE"]{
+	 background-color: rgb(0,112,192)!important;
+	     border: 1px solid black;
+         border-start-start-radius: 5px;
+    border-end-start-radius: 5px;
+    border-start-end-radius: 5px;
+    border-end-end-radius: 5px;
+}
+[data-status-color="ACTIVE"]{
+	 background-color: rgb(0,246,146) !important;
+	     border: 1px solid black;
+         border-start-start-radius: 5px;
+    border-end-start-radius: 5px;
+    border-start-end-radius: 5px;
+    border-end-end-radius: 5px;
+}
+.flexboxtimeslottext{
+	font-size:8px !important;
+    color: rgb(89,89,89);
+}
+.Advisorheaderborder{
+	border: 1px solid rgb(0,176,240);
+    border-radius: 10px;
+    padding-left: 10px;
+}
+.SANumCount{
+	border: 0.1rem solid rgb(0,176,240)!important;
+	border-radius: 5px !important;
+	padding: 4px;
+    margin: 2px;
+
+}
+.SAPanelExpandicon .sapMBtnIcon{
+	line-height: 3.375rem !important
+}
+
+.SAPanelExpandicon .sapMPanelContent{
+	    margin-top: 10px !important;
+	/*       border-right: 10px solid red !important; */
+   margin-left: 30px;
+    /* border: 0px solid; */
+    /*border-radius: 35px;*/
+}
+/* .sapUiCalendarRowNow{
+	background:red;
+} */
+.segmentedbtn{
+	width:50px !important;
+}
+.segmentedbtn.sapMSegB .sapMSegBBtn .sapMSegBBtnInner{
+	height: 18px !important;
+
+	padding-left:0px !important;
+	
+}
+.segmentedbtn .sapMSegBBtn:first-child .sapMSegBBtnInner {
+    border-top-left-radius: 1.2rem;
+    border-bottom-left-radius: 1.2rem;
+}
+.segmentedbtn .sapMSegBBtn.sapMSegBtnLastVisibleButton .sapMSegBBtnInner {
+    border-right: 1px solid #bfbfbf;
+    border-top-right-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+}
+.sapMSegBBtnSel[data-mydata="Concern"] .sapMSegBBtnInner{
+	background: red;
+}
+.sapMSegBBtnSel[data-mydata="Concern"]:hover .sapMSegBBtnInner {
+    background: #FF5733 !important;
+    opacity: 3;
+}
+
+.sapMSegBBtnSel[data-mydata="NA"] .sapMSegBBtnInner{
+	background: green;
+}
+.sapMSegBBtnSel[data-mydata="NA"]:hover .sapMSegBBtnInner {
+    background: lightgreen !important;
+    opacity: 3;
+}
+.sapMSegBBtnSel[data-mydata="okay"] .sapMSegBBtnInner{
+	background: yellow;
+	color:black;
+}
+.sapMSegBBtnSel[data-mydata="okay"]:hover .sapMSegBBtnInner{
+    background: yellow !important;
+    opacity: 3;
+}
+.Tokenclass .sapMGenericTagWrap .sapMGenericTagText {
+min-width: 0px !important;
+}
+[data-mydata2="To Be attended"].Tokenclass .sapMGenericTagWrap{
+	    border-left-width: 0px;
+	       border-right: 0.35rem solid lightgrey !important;
+           padding-left: 0px;
+}
+[data-mydata2="Work In Progress"].Tokenclass .sapMGenericTagWrap{
+    border-left-width: 0px;
+       border-right: 0.35rem solid yellow !important;
+       padding-left: 0px;
+}
+[data-mydata2="Job Done"].Tokenclass .sapMGenericTagWrap{
+    border-left-width: 0px;
+       border-right: 0.35rem solid green !important;
+       padding-left: 0px;
+}
+[data-mydata2="Hold"].Tokenclass .sapMGenericTagWrap{
+    border-left-width: 0px;
+       border-right: 0.35rem solid red !important;
+       padding-left: 0px;
+}
+.Tokenclass.sapMGenericTag .sapMGenericTagWrap .sapMGenericTagValue {
+    margin-left: 0rem !important;
+}
+.Tokenclass{
+	margin-left:5px;
+}
+.TokenContent.sapMFlexBoxWrapNoWrap {
+    flex-wrap: wrap !important;
+}
+.TokenToolBar{
+border: solid 0.0625rem #ccc;
+    background: black;
+}
+.TokenToolBar .sapMTitle{
+	color:white;
+}
+
+.PlanCalRowCount .sapMPlanCalRowHead .sapMSLIDescription{
+    position: absolute;
+    left: 80%;
+    padding: 4px !important;
+    border: 0.1rem solid rgb(0,176,240);
+    border-radius: 5px;
+    color: rgb(0,176,240);
+}
+.PlanCalRowCount .sapMLIBContent{
+	height:5rem;
+}
+.Clearfilter{
+margin-bottom: 10px !important;
+margin-left: 3px !important;
+}
+
+.LegendButton .sapMBtnIcon{
+font-size:10px	;
+	width:10px
+}
+.LegendButton .sapMBtnInner.sapMBtnText {
+    padding-left: 0;
+    padding-right: 0;
+}
+.sapUiCalendarAppText{
+display:grid;	
+}
+
+.MyIconTabbar .sapMITH:not(.sapMITBTextOnly) .sapMITBHead {
+    padding-top: 0.5rem !important;
+}
+.MyIconTabbar .sapMITBContent{
+	    padding-top: 0rem !important;
+}
+.serachField .sapMSFF{
+	border-radius: 20px;
+ 
+    line-height: 2rem;
+    border: 1px solid #393A3B;
+    background: #282B32BD;
+}
+.serachField .sapMSFS{
+	
+    line-height: 1.6rem;
+}
+.SAUpcomingdataTime{
+	margin-left: 10px;
+    margin-bottom: 20px;
+}
+.sapUiSmallMarginBottom {
+     margin-bottom: 0rem !important;
+}
+.SAPanelExpandicon .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable:not(.sapMBtnActive):not(.sapMToggleBtnPressed), .sapMIBar-CTX .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable:not(.sapMBtnActive):not(.sapMToggleBtnPressed) {
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+.ReassignBTN.sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable:not(.sapMBtnActive):not(.sapMToggleBtnPressed), .sapMIBar-CTX .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable:not(.sapMBtnActive):not(.sapMToggleBtnPressed) {
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+.SAPanelExpandicon .sapMBtnInner {
+    text-shadow: none;
+    background: transparent !important;
+    border: 0rem;
+}
+.ReassignBTN .sapMBtnInner {
+    text-shadow: none;
+    background: transparent !important;
+    border: 0rem;
+}
+html.sap-desktop .SAPanelExpandicon .sapMBtn:focus>.sapMFocusable {
+    outline: 0rem dotted #000 !important;
+    outline-offset: -0.1875rem;
+}
+[data-status-panel="ACTIVE"] {
+    border-right: 5px solid rgb(0,246,146) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+    margin-bottom: 5px;
+    background: rgb(41 41 41);
+    border-top: 1px solid #495767;
+}
+[data-status-panel="BUSY"] {
+    border-right: 5px solid rgb(255,80,80)  !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+    margin-bottom: 5px;
+    background: rgb(41 41 41);
+    border-top: 1px solid #495767;
+}
+[data-status-panel="ABSENT"] {
+    border-right: 5px solid rgb(104,104,104) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+    margin-bottom: 5px;
+    background: rgb(41 41 41);
+    border-top: 1px solid #495767;
+}
+[data-status-panel="AVAILABLE"] {
+    border-right: 5px solid rgb(0,112,192) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+    margin-bottom: 5px;
+    background: rgb(41 41 41);
+    border-top: 1px solid #495767;
+}
+.PlanCalRowCount .sapUiCalendarApp{height: 1.9rem;
+    border-radius: 8px;
+   }
+.PlanCalRowCount .sapUiCalendarAppTitleWrapper{
+display: grid;
+}
+.PlanCalRowCount .sapUiCalendarAppTitle {
+    margin-left: 20px;
+}
+.sapMGenericTagWrap {
+   
+    border-radius: 8px;
+}
+@media screen and (min-width: 489px) {
+.SASearch{
+    position: absolute;
+    top: 100%;
+}
+.PlanCalRowCount .PCLegend{
+    position: absolute;
+        top: 50px;
+        right: 35%;
+    }
+    
+}
+@media screen and (max-width: 489px) {
+ .PlanCalRowCount .sapMPlanCalRowHead .sapMSLIDiv{
+    height:30px !important;
+  }
+  .TBSchtable .sapMListTblSubCntValBlock {
+    display: contents;
+}
+.PCScrollcontainer{
+    height:40rem !important;
+}
+[data-mydataTSSA="Not Attended"] .sapMListTblCell{
+    border-right:5px solid rgb(104,104,104) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+    }
+    [data-mydataTSSA="Attended"] .sapMListTblCell{
+        border-right:5px solid rgb(0,218,130) !important;
+        border-start-end-radius: 15px;
+        border-end-end-radius: 15px;
+        }
+    [data-mydataTSSA="Delayed"] .sapMListTblCell{
+        border-right:5px solid rgb(255,80,80) !important;
+        border-start-end-radius: 15px;
+        border-end-end-radius: 15px;
+            }
+    [data-mydataTSSA="Not Arrived"] .sapMListTblCell{
+        border-right:5px solid rgb(255,255,0) !important;
+        border-start-end-radius: 15px;
+        border-end-end-radius: 15px;
+                }
+    [data-mydataTSSA="Rescheduled"] .sapMListTblCell{
+        border-right:5px solid rgb(0,176,240) !important;
+        border-start-end-radius: 15px;
+        border-end-end-radius: 15px;
+                    }
+}
+.PlanCalRowCount .sapUiCalendarRowApps {
+   
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.PlanCalRowCount .sapUiCalendarRowNow {
+    /* background: rgb(0,176,240);
+    border-color: rgb(0,176,240); */
+    border: 1px dashed rgb(0,176,240);
+}
+.whitelegbtn .sapUiIcon{
+    color: white !important;
+}
+.whitelegbtn .sapMBtnContent bdi{
+    color:white !important;
+}
+.yellowlegbtn .sapUiIcon{
+    color:rgb(255,255,0) !important;
+}
+.yellowlegbtn .sapMBtnContent bdi{
+  
+    color:rgb(255,255,0) !important;
+}
+.redlegbtn .sapUiIcon{
+    color:rgb(255,80,80) !important;
+}
+.redlegbtn .sapMBtnContent bdi{
+    color:rgb(255,80,80) !important;
+}
+.greylegbtn .sapUiIcon{
+    color:rgb(104,104,104) !important;
+}
+.greylegbtn .sapMBtnContent bdi{
+    color:rgb(104,104,104) !important;
+}
+.greenlegbtn .sapUiIcon{
+    color:rgb(0,246,146) !important;
+}
+.greenlegbtn .sapMBtnContent bdi{
+    color:rgb(0,246,146) !important;
+}
+.bluelegbtn .sapUiIcon{
+    color:rgb(0,112,192) !important;
+}
+.bluelegbtn .sapMBtnContent bdi{
+    color:rgb(0,112,192) !important;
+}
+.Todaybluebtn .sapMBtnContent bdi{
+	color:rgb(0,112,192) !important;
+	
+}
+.Todaybluebtn .sapMBtnInner{
+   
+    border: 0.0625rem solid rgb(0,112,192) !important; 
+	
+}
+.TBSPanel .sapMPanelContent{
+	border:1px solid black !important;
+	
+}
+.TBSPanel .sapMPanelWrappingDivTb{
+	
+	background:black !important;
+}
+.PlanCalRowCount .sapUiCalItem.sapUiCalItemNow {
+    border: 0.125rem solid rgb(0,176,240);
+    border-radius: 0.25rem;
+    background: rgb(127,127,127) !important;
+}
+
+[data-mydatacalrowstatus="ACTIVE"] .sapMPlanCalRowHead{
+    border-left: 5px solid rgb(0,246,146);
+    border-start-start-radius: 15px;
+    border-end-start-radius: 15px;
+}
+[data-mydatacalrowstatus="BUSY"] .sapMPlanCalRowHead{
+    border-left: 5px solid rgb(255,80,80);
+    border-start-start-radius: 15px;
+    border-end-start-radius: 15px;
+}
+[data-mydatacalrowstatus="ABSENT"] .sapMPlanCalRowHead{
+    border-left: 5px solid rgb(104,104,104);
+    border-start-start-radius: 15px;
+    border-end-start-radius: 15px;
+}
+[data-mydatacalrowstatus="AVAILABLE"] .sapMPlanCalRowHead{
+    border-left: 5px solid rgb(0,112,192);
+    border-start-start-radius: 15px;
+    border-end-start-radius: 15px;
+}
+.Assigndlg .sapMBarTitleAlignAuto .sapMBarPH {
+    justify-content: center;
+}
+.sapUiSizeCompact .TopToolBar.sapMTB {
+    height: 2.2rem;
+}
+
+.sapUiSizeCompact .Regtoolbar.sapMBar {
+    height: 2.2rem;
+}
+.PlanCalRowCount .sapMPlanCalRowHead .sapMSLITitle
+{
+	width:70%;
+    min-height: 2rem;
+}
+.TagGenericKAM{
+    margin: 0 0 0 0.5rem;    
+}
+.Rowhilightclass{
+    background:black;
+    /* border: 1px solid rgb(0,112,192); */
+}
+[data-mydataTSSA="Not Attended"] > td:nth-of-type(9){
+border-right:5px solid rgb(104,104,104) !important;
+border-start-end-radius: 15px;
+border-end-end-radius: 15px;
+}
+[data-mydataTSSA="Attended"] > td:nth-of-type(9){
+    border-right:5px solid rgb(0,218,130) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+    }
+[data-mydataTSSA="Delayed"] > td:nth-of-type(9){
+    border-right:5px solid rgb(255,80,80) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+        }
+[data-mydataTSSA="Not Arrived"] > td:nth-of-type(9){
+    border-right:5px solid rgb(255,255,0) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+            }
+[data-mydataTSSA="Rescheduled"] > td:nth-of-type(9){
+    border-right:5px solid rgb(0,176,240) !important;
+    border-start-end-radius: 15px;
+    border-end-end-radius: 15px;
+                }
+.MainSAHBOX{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black; 
+    margin-bottom: 2px;
+}
+
+.CountSAVBOX{
+    border-right: 1px solid grey;
+}
+.statustext{
+    font-size: 8px;
+    position: absolute;
+    right: 3px !important;
+    top: 17px !important;
+}
+
+[data-status-panel="ACTIVE"] .statustext {
+	color:rgb(0,246,146) ;
+}
+
+[data-status-panel="BUSY"] .statustext  {
+    border-right: 5px solid rgb(255,80,80)  !important; 
+}
+[data-status-panel="ABSENT"] .statustext {
+    border-right: 5px solid rgb(104,104,104) !important; 
+}
+[data-status-panel="AVAILABLE"] .statustext {
+    border-right: 5px solid rgb(0,112,192) !important;
+}
+.TBSchtable .sapMColumnHeader .sapMText{
+	color:rgb(89,89,89);
+}
+.TBSchtable .sapMTableTBody .sapMListTblRow{
+	background:rgb(41,41,41);
+}
+.TBSchtable .sapMTableTH {
+    background: #1c2228;
+    border: 0px;
+}
+.Shadowfilterclass{
+	border-radius: 5px;
+    box-shadow: 1.5px 1.5px 1px 1px rgb(0 112 192);
+}
+.Advisorheaderborder .sapFAvatar{
+    margin-top: 4px;
+margin-right: 4px;
+}
+.serachField ::-webkit-input-placeholder {
+    color: #4c4c4c;
+}
+.timerheadvbox{
+   
+    margin-bottom: 25px;
+}
+@media screen and (min-width: 489px) {
+.timerscroll{
+    width: 390px !important;
+    
+}
+.timerheadvbox{
+    width: 41rem;
+    margin-bottom: 25px;
+}
+.timerscrollbody{
+    width: 382px !important;
+    
+}
+.SAUpcomingdataTime{
+    width: 48rem;
+    
+}
+html.sap-desktop:not(.sapUiNativeScrollbars) ::-webkit-scrollbar {
+
+    width: 7px !important;
+    height: 7px !important;
+}
+.statustext {
+    font-size: 8px;
+    position: absolute;
+    right: 41%;
+    top: 12px;
+}
+}
+
+
+
+[aria-colindex="10"].sapUiTableDataCell, .sapUiTableCreationRow .sapUiTableCreationRowForm .sapUiTableCell {
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-bottom: none;
+        padding: 0;
+    vertical-align: middle;
+   
+}
+.sapUiTableLastRow [aria-colindex="10"].sapUiTableDataCell, .sapUiTableCreationRow .sapUiTableCreationRowForm .sapUiTableCell {
+   
+    border-bottom: 2px solid red;
+    border-end-start-radius: 40px ;
+        border-end-end-radius: 40px;
+        padding: 0;
+    vertical-align: middle;
+   
+}
+
+[aria-colindex="10"].sapUiTableCell.sapUiTableHeaderCell {
+    border-bottom: none;
+     border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-start-start-radius: 40px ;
+        border-start-end-radius: 40px;
+    border-top: 2px solid red;
+    background: black;
+}
+[aria-colindex="11"].sapUiTableDataCell,[aria-colindex="12"].sapUiTableDataCell,[aria-colindex="13"].sapUiTableDataCell,[aria-colindex="14"].sapUiTableDataCell,[aria-colindex="15"].sapUiTableDataCell,[aria-colindex="16"].sapUiTableDataCell,[aria-colindex="17"].sapUiTableDataCell, .sapUiTableCreationRow .sapUiTableCreationRowForm .sapUiTableCell {
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    border-bottom: none;
+        padding: 0;
+    vertical-align: middle;
+   
+}
+.sapUiTableLastRow [aria-colindex="11"].sapUiTableDataCell,
+.sapUiTableLastRow [aria-colindex="12"].sapUiTableDataCell,
+.sapUiTableLastRow [aria-colindex="13"].sapUiTableDataCell,
+.sapUiTableLastRow [aria-colindex="14"].sapUiTableDataCell,
+.sapUiTableLastRow [aria-colindex="15"].sapUiTableDataCell,
+.sapUiTableLastRow [aria-colindex="16"].sapUiTableDataCell,
+.sapUiTableLastRow [aria-colindex="17"].sapUiTableDataCell,
+.sapUiTableCreationRow .sapUiTableCreationRowForm .sapUiTableCell {
+   
+    border-bottom: 2px solid grey;
+    border-end-start-radius: 40px ;
+        border-end-end-radius: 40px;
+        padding: 0;
+    vertical-align: middle;
+   
+}
+
+[aria-colindex="11"].sapUiTableCell.sapUiTableHeaderCell,
+[aria-colindex="12"].sapUiTableCell.sapUiTableHeaderCell,
+[aria-colindex="13"].sapUiTableCell.sapUiTableHeaderCell,
+[aria-colindex="14"].sapUiTableCell.sapUiTableHeaderCell,
+[aria-colindex="15"].sapUiTableCell.sapUiTableHeaderCell,
+[aria-colindex="16"].sapUiTableCell.sapUiTableHeaderCell,
+[aria-colindex="17"].sapUiTableCell.sapUiTableHeaderCell{
+    border-bottom: none;
+     border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    border-start-start-radius: 40px ;
+        border-start-end-radius: 40px;
+    border-top: 2px solid grey;
+    background: black;
+}
+.CalTable .sapUiTableContentRow {
+    position: relative;
+    /* background-color: black; */
+}
+/* .CalTable .sapUiTableCell.sapUiTableHeaderCell {
+      background: grey;
+} */
+.CalTable .sapMText {
+	color: white;
+}
+.CalTable .sapUiTableCell .sapMLabel {
+	color: white;
+}
+[data-mydatacalveh="GREEN"] .sapUiCalendarAppCont{
+    background-color: green !important;
+        border:0px solid;
+    }
+    [data-mydatacalveh="GREEN"]{
+    border-left: 0rem solid !important;
+    }
+    
+    [data-mydatacalveh="GREEN"] .sapUiCalendarAppTitle{
+        color:black !important;
+        font-weight: bold;
+    }
+    [data-mydatacalveh="RED"] .sapUiCalendarAppCont{
+        background-color: red !important;
+            border:0px solid;
+        }
+        [data-mydatacalveh="RED"]{
+        border-left: 0rem solid !important;
+        }
+        
+        [data-mydatacalveh="RED"] .sapUiCalendarAppTitle{
+            color:black !important;
+            font-weight: bold;
+        }
+        [data-mydatacalveh="YELLOW"] .sapUiCalendarAppCont{
+            background-color: YELLOW !important;
+                border:0px solid;
+            }
+            [data-mydatacalveh="YELLOW"]{
+            border-left: 0rem solid !important;
+            }
+            
+            [data-mydatacalveh="YELLOW"] .sapUiCalendarAppTitle{
+                color:black !important;
+                font-weight: bold;
+            }
+            [data-mydatacalveh=""] .sapUiCalendarAppCont{
+                background-color: black !important;
+                    border:0px solid;
+                }
+                [data-mydatacalveh=""]{
+                border-left: 0rem solid !important;
+                }
+                
+                [data-mydatacalveh=""] .sapUiCalendarAppTitle{
+                    color:white !important;
+                    font-weight: bold;
+                }
+                /* .Circle .sapMInputBaseContentWrapper{
+                    border-radius: 50%;
+                    border-width: 4px;
+                    
+                } */
+
+                [data-mydataJCB="GREEN"].Circle{
+                    background: linear-gradient(to top, black,green);
+                    border-radius: 50%;
+                    color: #122dff;
+                    display: inline-block;
+                    font-size: 20px;
+                    padding: 3px !important;
+                    text-decoration: none;
+                }
+                [data-mydataJCB="GREEN"].Circle span{
+                    border-radius: 70%;
+                    
+                    border: 0px;
+                    background: #000;
+                    display: block;
+                }
+                .Circle .sapMInputBaseContentWrapper{
+                    border-radius: 50%;
+                    border-width: 4px;
+                    
+                }
+                /* [data-mydataJCB="GREEN"].Circle{
+                    background: linear-gradient(to top, black,green);
+                    border-radius: 50%;
+                    color: #122dff;
+                    display: inline-block;
+                    font-size: 20px;
+                    padding: 3px !important;
+                    text-decoration: none;
+                }
+                [data-mydataJCB="GREEN"].Circle span{
+                    border-radius: 70%;
+                    border: 0px;
+                    background: #000;
+                    display: block;
+                } */
+                .PlanCalRowCount .sapMSLITitle{
+                    font-size: .75rem !important;
+                }
+                .CalTable .sapMText{
+                    font-size: .75rem !important;
+                }
+                .Tabseperator.sapMTBSeparator {
+                    width: 0.0825rem !important;
+                    background: #b3b7bb !important;
+                }

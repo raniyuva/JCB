@@ -1,0 +1,73 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:ui="sap.ui.table">
+	<Dialog id="idRODialog" showHeader="false" contentHeight="80%" contentWidth="50%" >
+		<!--<beginButton>
+			
+		</beginButton>-->
+		<buttons>
+		<Button text="Hold" type="Emphasized" press="handleHoldData" enabled="{oLocalJsonModel>/holdactionenableflag}" ></Button>
+		<Button text="Unassign" type="Reject" press="handleUnAssignData"></Button>
+		<Button type="Accept" text="Assign" press="handleAssignData" enabled="{oLocalJsonModel>/assignactionenableflag}"/>
+		<Button text="Cancel" press="onCancelDialog" enabled="{oLocalJsonModel>/cancelactionenableflag}"/>
+		</buttons>
+		<!--<endButton>
+			
+			
+		</endButton>-->
+		<content>
+			<f:SimpleForm width="90%"  maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="3"
+				labelSpanM="3" labelSpanS="4" emptySpanS="0" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="sapUiResponsiveMargin">
+				<f:content>
+					<!-- <MessageStrip id="idMsgStripHoldError" type="Error" showIcon="true" visible="None" class="sapUiMediumMarginBottom">
+					</MessageStrip> -->
+					<Label text="Repair Order"/>
+					<Text id="idROText" width="70%" text="{oLocalJsonModel>/AssignSAModelPopup/Order_No}"/>
+					<Label text="Registration Number"/>
+					<Text id="VehRegNo" width="70%" text="{oLocalJsonModel>/AssignSAModelPopup/Reg_No}"></Text>
+					<Label text="Veh Model"/>
+					<Text id="VehModel" width="70%" text="{oLocalJsonModel>/AssignSAModelPopup/Model}"/>
+					<Label text="Service Advisor"/>
+					<Text id="SrvAdvisor" width="70%" text="{oLocalJsonModel>/AssignSAModelPopup/ServiceAdvisor_Name}"/>
+				<Label text="Floor Supervisor"/>
+				
+					<Select id="flrsprvisor" width="70%" items="{path: 'oLocalJsonModel>/floorsuperModel'}" change="handleSelectionflr" selectedKey="{oLocalJsonModel>/AssignSAModelPopup/FloorSupervisor_No}">
+						<core:Item key="{oLocalJsonModel>EmpNo}" text="{oLocalJsonModel>EmpName}"/>
+					</Select>
+					<Label text="Main Tech"/>
+					<Select id="Maintech" width="70%" items="{path: 'oLocalJsonModel>/MainTechnicianSetmodel'}" change="handleSelectionTech" selectedKey="{oLocalJsonModel>/AssignSAModelPopup/Technicion_No}">
+						<core:Item key="{oLocalJsonModel>EmpNo}" text="{oLocalJsonModel>EmpName}"/>
+					</Select>
+					<Label text="Foreman"/>
+					<Select id="foreman" width="70%" items="{path: 'oLocalJsonModel>/ForemanSetmodel'}" change="handleSelectionforeman" selectedKey="{oLocalJsonModel>/AssignSAModelPopup/Foreman_No}">
+						<core:Item key="{oLocalJsonModel>EmpNo}" text="{oLocalJsonModel>EmpName}"/>
+					</Select>
+						<Label text="Select Bay"/>
+					<Select id="baywise" width="70%" items="{path: 'oLocalJsonModel>/BayDetailsSetModel'}" change="handleSelectionBay" selectedKey="{oLocalJsonModel>/AssignSAModelPopup/BayName}">
+						<core:Item key="{oLocalJsonModel>BayName}" text="{oLocalJsonModel>BayCat}"/>
+					</Select>
+					<Label text="Planning Start Time"/>
+					<DateTimePicker id="PlanStartDate" width="70%" placeholder="Enter Date-Time" valueFormat="dd/MM/yyyy, hh:mm a" displayFormat="dd/MM/yyyy, hh:mm a" required="true" change="onAsschange" />
+					<Label text="Promised Delivery Time"/>
+					<DateTimePicker id="promisedDeliveryDate" width="70%" placeholder="Enter Date-Time" valueFormat="dd/MM/yyyy, hh:mm a" displayFormat="dd/MM/yyyy, hh:mm a" required="true"  change="onAsschange" />
+					<Label text="Remarks" ></Label>
+					<TextArea value="{oLocalJsonModel>/AssignSAModelPopup/Remarks}" change="onAsschange"></TextArea>
+					<Label text="Bay Status"></Label>
+					<Select selectedKey="{oLocalJsonModel>/AssignSAModelPopup/Bay_Status}" id="Baystat" width="70%" items="{path: 'oLocalJsonModel>/BaystatModel'}" change="handleholdchange" >
+						<core:Item key="{oLocalJsonModel>Bay_Status}" text="{oLocalJsonModel>Bay_Status}"/>
+					</Select>
+					<Label text="OnHold"></Label>
+					<HBox>
+					<Select selectedKey="{oLocalJsonModel>/AssignSAModelPopup/Hold_reason}" id="Holdreason" width="70%" items="{path: 'oLocalJsonModel>/HoldModel'}" change="handleSelectionHold" >
+						<core:Item key="{oLocalJsonModel>Hold_reason}" text="{oLocalJsonModel>Hold_reason}"/>
+					</Select>
+					<Input id="pofield" value="" visible="{oLocalJsonModel>/POfield}" placeholder="PO NUMBER"></Input>
+					</HBox>
+					<Label text="Delay Reason"></Label>
+					<Select  selectedKey="{oLocalJsonModel>/AssignSAModelPopup/Delay_reason}" id="Delayreason" width="70%" items="{path: 'oLocalJsonModel>/DelayModel'}" change="handleholdchange" >
+						<core:Item key="{oLocalJsonModel>Delay_reason}" text="{oLocalJsonModel>Delay_reason}"/>
+					</Select>
+					<!--<Button text="Assign" type="Accept" press="handleAssignData" width="60%"/>-->
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

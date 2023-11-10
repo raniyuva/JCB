@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.4"
+metadata:
+  name: comZJCB
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: DMS_DEV_DMD
+          url: http://D365DMDCIDI.in365.corpintra.net:44300
+        app:
+          name: ZJCB
+          description: Job Control Board
+          package: ZDICV_FI
+          transport:  DMDK903423

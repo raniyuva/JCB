@@ -1,0 +1,101 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZSVC_JCB_SRV" xml:lang="en" sap:schema-version="1">
+            <Annotation
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Core.SchemaVersion" String="1.0.0"/>
+                <EntityType Name="FloorSupervisor" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="EmpNo"/>
+                    </Key>
+                    <Property Name="EmpNo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="EmpName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                </EntityType>
+                <EntityType Name="HeaderInfo" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="LoginID"/>
+                    </Key>
+                    <Property Name="LoginID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="KAMCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="ExpressCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="RakshanaCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="OtherCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="AppointmentCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="WalkInCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="OnsiteCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="NotAttendedCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="AttendedCount" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <NavigationProperty Name="TBA_Call" Relationship="ZSVC_JCB_SRV.TBA_Call" FromRole="FromRole_TBA_Call" ToRole="ToRole_TBA_Call"/>
+                </EntityType>
+                <EntityType Name="ToBeAssigned" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="Vin_No"/>
+                    </Key>
+                    <Property Name="Vin_No" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Reg_No" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Cust_ID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Cust_Name" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Mobile_No" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Order_No" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Type" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Start_Timestamp" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="End_Timestamp" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Employee_No" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                </EntityType>
+                <EntityType Name="BayDetails" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="BayName"/>
+                    </Key>
+                    <Property Name="BayName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="BayCat" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <NavigationProperty Name="BAYWISE" Relationship="ZSVC_JCB_SRV.BAYWISE" FromRole="FromRole_BAYWISE" ToRole="ToRole_BAYWISE"/>
+                </EntityType>
+                <EntityType Name="TechnicianDetails" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="EMP_NO"/>
+                    </Key>
+                    <Property Name="EMP_NO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="EMP_Name" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <NavigationProperty Name="TechWise" Relationship="ZSVC_JCB_SRV.TechWise" FromRole="FromRole_TechWise" ToRole="ToRole_TechWise"/>
+                </EntityType>
+                <Association Name="BAYWISE" sap:content-version="1">
+                    <End Type="ZSVC_JCB_SRV.BayDetails" Multiplicity="1" Role="FromRole_BAYWISE"/>
+                    <End Type="ZSVC_JCB_SRV.ToBeAssigned" Multiplicity="*" Role="ToRole_BAYWISE"/>
+                </Association>
+                <Association Name="TBA_Call" sap:content-version="1">
+                    <End Type="ZSVC_JCB_SRV.HeaderInfo" Multiplicity="1" Role="FromRole_TBA_Call"/>
+                    <End Type="ZSVC_JCB_SRV.ToBeAssigned" Multiplicity="*" Role="ToRole_TBA_Call"/>
+                </Association>
+                <Association Name="TechWise" sap:content-version="1">
+                    <End Type="ZSVC_JCB_SRV.TechnicianDetails" Multiplicity="1" Role="FromRole_TechWise"/>
+                    <End Type="ZSVC_JCB_SRV.ToBeAssigned" Multiplicity="*" Role="ToRole_TechWise"/>
+                </Association>
+                <EntityContainer Name="ZSVC_JCB_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                    <EntitySet Name="FloorSupervisorSet" EntityType="ZSVC_JCB_SRV.FloorSupervisor" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                    <EntitySet Name="HeaderInfoSet" EntityType="ZSVC_JCB_SRV.HeaderInfo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                    <EntitySet Name="ToBeAssignedSet" EntityType="ZSVC_JCB_SRV.ToBeAssigned" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                    <EntitySet Name="BayDetailsSet" EntityType="ZSVC_JCB_SRV.BayDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                    <EntitySet Name="TechnicianDetailsSet" EntityType="ZSVC_JCB_SRV.TechnicianDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                    <AssociationSet Name="TBA_Call_AssocSet" Association="ZSVC_JCB_SRV.TBA_Call" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                        <End EntitySet="HeaderInfoSet" Role="FromRole_TBA_Call"/>
+                        <End EntitySet="ToBeAssignedSet" Role="ToRole_TBA_Call"/>
+                    </AssociationSet>
+                    <AssociationSet Name="BAYWISE_AssocSet" Association="ZSVC_JCB_SRV.BAYWISE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                        <End EntitySet="BayDetailsSet" Role="FromRole_BAYWISE"/>
+                        <End EntitySet="ToBeAssignedSet" Role="ToRole_BAYWISE"/>
+                    </AssociationSet>
+                    <AssociationSet Name="TechWise_AssocSet" Association="ZSVC_JCB_SRV.TechWise" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                        <End EntitySet="TechnicianDetailsSet" Role="FromRole_TechWise"/>
+                        <End EntitySet="ToBeAssignedSet" Role="ToRole_TechWise"/>
+                    </AssociationSet>
+                </EntityContainer>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZSVC_JCB_SRV/$metadata"/>
+                    <atom:link
+                        xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZSVC_JCB_SRV/$metadata"/>
+                    </Schema>
+                </edmx:DataServices>
+            </edmx:Edmx>

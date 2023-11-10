@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+<Dialog title="Messages" showHeader="true">
+	<List  items="{path:'MsgModel>/'}">
+		<CustomListItem>
+			<HBox>
+				<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+					<Text text="{MsgModel>}"/>
+				</VBox>
+			</HBox>
+		</CustomListItem>
+	</List>
+	<buttons>
+		<Button text="ok" press="onPressMsgok"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

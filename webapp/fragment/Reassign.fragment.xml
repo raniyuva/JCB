@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:ui="sap.ui.table">
+	<Dialog  showHeader="false" >
+		<beginButton>
+			<Button type="Reject" text="Cancel" press="handleReassignCancle"/>
+		</beginButton>
+		
+		<endButton>
+			
+				<Button type="Accept" text="Assign" press="handleReassign"/>
+		</endButton>
+		<content>
+			<Table inset="false" items="{oLocalJsonModel>/Reassigndataset}"  >
+					<headerToolbar>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+			<Title text="Technician Reassign"></Title>
+				<ToolbarSpacer/>
+			<Button text="Assign All" id="AssignAllbtn" visible="{oLocalJsonModel>/ReassigndatasetVisible}" press="OnReassignSAAll"></Button>
+				<Select id="idReassignallComboBox"  items="{path: 'oLocalJsonModel>/MainTechnicianSetmodel'}" change="handleSelectionSA" visible="{oLocalJsonModel>/ReassigndatasetVisible}" selectedKey="{oLocalJsonModel>/ReassigndatasetallValue}" >
+						<core:Item key="{oLocalJsonModel>EmpNo}" text="{oLocalJsonModel>EmpName}"/>
+					</Select>
+			</OverflowToolbar>
+		</headerToolbar>
+												<columns>
+													<Column >
+														<Text text="Assigned Time"/>
+													</Column>
+													
+													<Column minScreenWidth="Desktop" demandPopin="true">
+														<Text text="Vehicle"/>
+													</Column>
+													<Column minScreenWidth="Desktop" demandPopin="true">
+														<Text text="Job Card"/>
+													</Column>
+													<Column minScreenWidth="Desktop" demandPopin="true">
+														<Text text="Current Technician"/>
+													</Column>
+													<Column minScreenWidth="Desktop" demandPopin="true">
+														<Text text="Assigned Technician"/>
+													</Column>
+													<Column minScreenWidth="Desktop" demandPopin="true">
+														<Text text="Availability Status"/>
+													</Column>
+													<Column minScreenWidth="Desktop" demandPopin="true">
+														<Text text="Reason"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem vAlign="Middle">
+														<customData>
+															<core:CustomData key="mydataReassign" value="{oLocalJsonModel>color}" writeToDom="true"></core:CustomData>
+														</customData>
+														<cells>
+															<Text text="{oLocalJsonModel>Starttime}"/>
+															<Text text="{oLocalJsonModel>License}"/>
+															<Text text="{oLocalJsonModel>Jobno}"/>
+															<Text text="{oLocalJsonModel>Currntadv}"/>
+															<Select  width="70%" items="{path: 'oLocalJsonModel>/MainTechnicianSetmodel'}" change="handleSelectionSARow" selectedKey="{oLocalJsonModel>Assigned_adsr}">
+						<core:Item key="{oLocalJsonModel>EmpNo}" text="{oLocalJsonModel>EmpName}"/>
+					</Select>
+					<Text text="{oLocalJsonModel>Avlstatus}"/>
+															<Select  width="70%" items="{path: 'oLocalJsonModel>/ReassignReasonSetmodel'}" change="handleSelectionSAReason" selectedKey="{oLocalJsonModel>Reason}">
+						<core:Item key="{oLocalJsonModel>Reason1}" text="{oLocalJsonModel>Reason1}"/>
+					</Select>
+														<!--	<Text text="{oLocalJsonModel>Reason}"/>-->
+															
+													
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+				
+		</content>
+	</Dialog>
+</core:FragmentDefinition>
